@@ -64,10 +64,3 @@ export default function Navbar() {
   );
 }
 
-
-//<BottomNavigationAction 
-              //label="Registrácia"
-              //value="/auth/registracia"  
-              //icon={<AppRegistrationIcon />} 
-              //onClick={handleLogin} 
-            ///>
