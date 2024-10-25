@@ -51,12 +51,6 @@ export default function Navbar() {
               icon={<LoginIcon />} 
               onClick={handleLogin} 
             />
-            <BottomNavigationAction 
-              label="Registrácia"
-              //value="/auth/registracia"  
-              icon={<AppRegistrationIcon />} 
-              onClick={handleLogin} 
-            />
           </>
         ) : (
           <BottomNavigationAction 
@@ -69,3 +63,11 @@ export default function Navbar() {
     </Box>
   );
 }
+
+
+//<BottomNavigationAction 
+              //label="Registrácia"
+              //value="/auth/registracia"  
+              //icon={<AppRegistrationIcon />} 
+              //onClick={handleLogin} 
+            ///>
