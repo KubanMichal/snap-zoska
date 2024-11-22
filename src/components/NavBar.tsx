@@ -1,66 +1,76 @@
-// /src/components/Navbar.tsx
-"use client";
+'use client'
 
-import * as React from 'react';
-import { BottomNavigation, BottomNavigationAction, Box } from '@mui/material';
-import HomeIcon from '@mui/icons-material/Home';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
-import LoginIcon from '@mui/icons-material/Login';
-//import AppRegistrationIcon from '@mui/icons-material/AppRegistration';
-import LogoutIcon from '@mui/icons-material/Logout';
-import { useRouter } from 'next/navigation';
-import { useSession, signIn, signOut } from 'next-auth/react';
+import * as React from 'react'
+import { useSession } from 'next-auth/react'
+import BottomNavigation from '@mui/material/BottomNavigation'
+import BottomNavigationAction from '@mui/material/BottomNavigationAction'
+import HomeIcon from '@mui/icons-material/Home'
+import PersonIcon from '@mui/icons-material/Person'
+import PostAddIcon from '@mui/icons-material/PostAdd'
+import LoginIcon from '@mui/icons-material/Login'
+import LogoutIcon from '@mui/icons-material/Logout'
+import Link from 'next/link'
 
-export default function Navbar() {
-  const [value, setValue] = React.useState('/');
-  const router = useRouter();
-  const { data: session } = useSession();
+export default function NavBar() {
+  const [value, setValue] = React.useState('Domov')
+  const { data: session } = useSession()
 
-  const handleNavigation = (event: React.SyntheticEvent, newValue: string) => {
-    setValue(newValue);
-    router.push(newValue);
-  };
-
-  const handleLogin = () => {
-    signIn('google');
-  };
-
-  const handleLogout = () => {
-    signOut();
-    setValue('/'); // Redirect to home or any other page after logout
-  };
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    setValue(newValue)
+  }
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <BottomNavigation
-        showLabels
-        value={value}
-        onChange={handleNavigation}
-        sx={{ '.Mui-selected': { fontSize: '0.875rem' } }}
-      >
-        <BottomNavigationAction label="Domov" value="/" icon={<HomeIcon />} />
-        <BottomNavigationAction label="Profily" value="/profil" icon={<AccountCircleIcon />} />
-        <BottomNavigationAction label="Príspevky" value="/prispevok" icon={<AddCircleIcon />} />
-
-        {!session ? (
-          <>
-            <BottomNavigationAction 
-              label="Prihlásenie" 
-              //value="/auth/prihlasenie" 
-              icon={<LoginIcon />} 
-              onClick={handleLogin} 
-            />
-          </>
-        ) : (
-          <BottomNavigationAction 
-            label="Odhlásiť" 
-            icon={<LogoutIcon />} 
-            onClick={handleLogout} 
+    <BottomNavigation
+      sx={{
+        width: '100%',
+        maxWidth: 700,
+        margin: '0 auto',
+        justifyContent: 'center',
+      }}
+      value={value}
+      onChange={handleChange}
+      showLabels
+    >
+      <BottomNavigationAction
+        label="Domov"
+        value="Domov"
+        icon={<HomeIcon />}
+        component={Link}
+        href="/"
+      />
+      <BottomNavigationAction
+        label="Profily"
+        value="Profily"
+        icon={<PersonIcon />}
+        component={Link}
+        href="/profil"
+      />
+      <BottomNavigationAction
+        label="Prispevky"
+        value="Prispevky"
+        icon={<PostAddIcon />}
+        component={Link}
+        href="/prispevok"
+      />
+      {session  ? (
+        <BottomNavigationAction
+          label="Odhlásenie"
+          value="Odhlasenie"
+          icon={<LogoutIcon />}
+          component={Link}
+          href="/auth/odhlasenie"
+        />
+      ) : (
+          <BottomNavigationAction
+            label="Prihlásenie"
+            value="Prihlasenie"
+            icon={<LoginIcon />}
+            component={Link}
+            href="/auth/prihlasenie"
           />
-        )}
-      </BottomNavigation>
-    </Box>
-  );
+        
+      )}
+    </BottomNavigation>
+  )
 }
 
