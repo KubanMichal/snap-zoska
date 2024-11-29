@@ -7,7 +7,7 @@ import AuthProvider from "../components/AuthProvider";
 
 export const metadata: Metadata = {
   title: "SnapZoška",
-  description: "Created by students of SPŠE Zochova 9, Bratislava",
+  description: "Michal Kuban",
 };
 
 export default function RootLayout({
@@ -30,7 +30,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-
-
-
