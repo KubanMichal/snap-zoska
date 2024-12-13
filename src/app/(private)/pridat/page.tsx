@@ -1,11 +1,17 @@
+// src/app/prispevok/page.tsx
+
 import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
 
-export const metadata = { title: 'Pridanie prispevku | Snap-zoska'};
+export const metadata = { title: "Pridat | ZoškaSnap"}
 
-export default function AddPost() {
+
+export default function Add() {
   return (
 
-      <Typography> Pridanie prispevku </Typography>
+    <Container>
+        <Typography>Pridať</Typography>
+    </Container>
 
   );
 }

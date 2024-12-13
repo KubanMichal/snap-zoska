@@ -1,25 +1,19 @@
-// src/app/(home)/page.tsx
 
-import React from 'react'; // Ensure React is imported
-import Typography from '@mui/material/Typography';
-import HomeContent from '@/components/HomeContent';
+// src/app/page.tsx
 
 
-export const metadata = { title: "Domov-zoškasnap" };
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../api/auth/[...nextauth]/authOptions';
+import NonAuthPageView from '@/sections/NonAuthHomeView';
+import AuthPageView from '@/sections/AuthHomeView';
 
-export default function Home() {
-  return (
-    <div>
-      <Typography variant="h4">Príspevky</Typography>
-      <HomeContent />
-    </div>
-  );
-  
+
+export const metadata = { title: "Domov | Kolcobos" };
+
+export default async function Home() {
+  const session = await getServerSession(authOptions);
+
+  return session ? <AuthPageView session={session} /> : <NonAuthPageView />;
 }
-
-
-
-
-
 
 

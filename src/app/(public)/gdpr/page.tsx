@@ -1,11 +1,17 @@
-import Typography from '@mui/material/Typography';
+// src/app/gdpr/page.tsx
 
-export const metadata = { title: 'GDPR | Zoska-snap'};
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+
+export const metadata = { title: "GDPR | ZoškaSnap"}
+
 
 export default function GDPR() {
   return (
 
-      <Typography> GDPR </Typography>
+    <Container>
+        <Typography>GDPR</Typography>
+    </Container>
 
   );
 }

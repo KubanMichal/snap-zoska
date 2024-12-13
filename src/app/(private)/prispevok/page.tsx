@@ -1,24 +1,17 @@
-import { Container } from '@mui/material';
+// src/app/prispevok/page.tsx
+
 import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+
+export const metadata = { title: "Zoznam prispevkov | ZoškaSnap"}
 
 
+export default function Postlisting() {
+  return (
 
-export const metadata = { title: "Detail prispevku‖ ZoskaSnap"}
-
-export default function PostDetail( {
-  params,
-
-}:  {
-  params: {
-    prispevokId: string;
-  };
-}) {
-
-  return (      
     <Container>
-        <Typography> Detail prispevku {params.prispevokId} </Typography>
+        <Typography>Listing prispevkov</Typography>        
     </Container>
-
-
- );
+    
+  );
 }
